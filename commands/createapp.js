@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, SlashCommandStringOption } = require('@discordjs/builders');
 OPT1 = new SlashCommandStringOption().setName("title").setDescription("The name of the application you are creating.").setRequired(true);
-OPT2 = new SlashCommandStringOption().setName("questions").setDescription("The questions for the application you are creating.").setRequired(true)
+OPT2 = new SlashCommandStringOption().setName("questions").setDescription("The questions for the application you are creating. (separate with ' | ')").setRequired(true)
 module.exports = {
     data:
         new SlashCommandBuilder()
@@ -11,9 +11,6 @@ module.exports = {
     async execute(interaction) {
         if (!interaction.member.permissions.has("ADMINISTRATOR")) return interaction.reply("You must have `ADMINISTRATOR` permissions to do this!");
         if (!interaction.client.db.get(interaction.guild.id + ".apps_log")) return interaction.reply("There is no form log set up! Please make sure one has been set up before making forms.");
-        // const existz = await interaction.client.db.get(interaction.guild.id + ".apps").then(async app => {
-        //     return app
-        // })
         const exist = await interaction.client.db.get(interaction.guild.id + ".apps").then(async app => {
             return app?.length || 0
         })

@@ -1,11 +1,8 @@
 const { Client, Collection } = require('discord.js');
-const client = new Client({ intents: 32767 });
+const client = new Client({ intents: ["GUILDS"] });
 const config = require("./config/config");
 const discordModals = require('discord-modals');
-const fs = require('fs');
 const { Database } = require("quickmongo");
-const mongoose = require("mongoose");
-const colors = require("colors");
 //==============================================
 client.db = new Database(config.mongo);
 client.config = config;
@@ -18,4 +15,10 @@ discordModals(client);
     require(`./handlers/${h}`)(client);
   });
 
+process.on("uncaughtException", (err)=>{
+  console.log(err.message)
+})
+process.on("unhandledRejection", (err)=>{
+  console.log(err.message)
+})
 client.login(config.token)
