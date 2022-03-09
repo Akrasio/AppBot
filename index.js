@@ -1,11 +1,10 @@
 const { Client, Collection } = require('discord.js');
 const client = new Client({ intents: ["GUILDS"] });
-const config = require("./config/config");
+require("dotenv").config();
 const discordModals = require('discord-modals');
 const { Database } = require("quickmongo");
 //==============================================
-client.db = new Database(process.env.MONGO || config.MONGO);
-client.config = config;
+client.db = new Database(process.env.MONGO);
 client.commands = new Collection();
 discordModals(client);
 ["events", "commands"]
@@ -25,4 +24,4 @@ client.once("ready", async () => {
   client.data = data;
   require("./web/index")(client)
 });
-client.login(process.env.TOKEN || config.TOKEN)
+client.login(process.env.TOKEN)

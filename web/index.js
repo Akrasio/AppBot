@@ -41,8 +41,8 @@ module.exports = async (client) => {
     // ------------------------------------------------------------
     const strategy = new Strategy({
         clientID: client.user.id,
-        clientSecret: process.env.clientSecret || client.config.clientSecret,
-        callbackURL: process.env.callbackURL || client.config.callbackURL,
+        clientSecret: process.env.clientSecret || process.env.clientSecret,
+        callbackURL: process.env.callbackURL || process.env.callbackURL,
         scope: ["identify", "guilds"]
     },
         (accessToken, refreshToken, profile, done) => {
@@ -108,7 +108,7 @@ module.exports = async (client) => {
         res.render('500', { title:'500: Internal Server Error', error: error, user: client, current: req.user});
       });
     // LISTEN ON PORT
-    let port = process.env.PORT || client.config.PORT || 3000;
+    let port = process.env.PORT || process.env.PORT || 3000;
     app.listen(port).on("listening", () => {
         console.log("Web server listening on PORT: " + port)
     });

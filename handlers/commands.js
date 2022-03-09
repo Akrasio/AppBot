@@ -18,11 +18,11 @@ module.exports = (client) => {
         // Registering the commands in the client
         const rest = new REST({
             version: '9'
-        }).setToken(client.config.token);
+        }).setToken(process.env.token);
         (async () => {
 
             try {
-                if (client.config.slashGlobal || !client.config.testGuildID) {
+                if (process.env.slashGlobal || !process.env.testGuildID) {
                     // await rest.put(
                     //     Routes.applicationCommands(client.user.id), {
                     //     body: commands
@@ -31,7 +31,7 @@ module.exports = (client) => {
                     console.log('Loaded Slash Commands (GLOBAL)');
                 } else {
                     // await rest.put(
-                    //     Routes.applicationGuildCommands(client.user.id, client.config.testGuildID), {
+                    //     Routes.applicationGuildCommands(client.user.id, process.env.testGuildID), {
                     //     body: commands
                     // },
                     // );
