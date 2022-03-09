@@ -1,6 +1,11 @@
 module.exports = {
-    mongo: "mongodb://localhost",
+    MONGO: "mongodb://localhost",
     slashGlobal: false,
     testGuildID: "12345789012345678",
-    token: "YourBotsTokenHereLOL"
+    web: true,
+    PORT: 80,
+    callbackURL: "http://localhost/callback",
+    clientSecret: "",
+    ownerID: "12345789012345678",
+    TOKEN: "YourBotsTokenHereLOL"
 }

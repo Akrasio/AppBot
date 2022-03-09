@@ -23,18 +23,18 @@ module.exports = (client) => {
 
             try {
                 if (client.config.slashGlobal || !client.config.testGuildID) {
-                    await rest.put(
-                        Routes.applicationCommands(client.user.id), {
-                        body: commands
-                    },
-                    );
+                    // await rest.put(
+                    //     Routes.applicationCommands(client.user.id), {
+                    //     body: commands
+                    // },
+                    // );
                     console.log('Loaded Slash Commands (GLOBAL)');
                 } else {
-                    await rest.put(
-                        Routes.applicationGuildCommands(client.user.id, client.config.testGuildID), {
-                        body: commands
-                    },
-                    );
+                    // await rest.put(
+                    //     Routes.applicationGuildCommands(client.user.id, client.config.testGuildID), {
+                    //     body: commands
+                    // },
+                    // );
                     console.log('Loaded Slash Commands (DEVELOPMENT)');
                 }
             } catch (e) { console.error(e); }

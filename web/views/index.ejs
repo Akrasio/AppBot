@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/now-ui-kit.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,600,700,800,900&display=swap" rel="stylesheet">
+    <title><%- user.user.username %></title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-transparent">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img src="assets/menuIcon.svg" width="20px" height="20px" style="max-width: none !important;">
+    </button>
+    <img src="<%- user.user.avatarURL({ format: 'png', size: 256, dynamic: true }) %>" width="50" height="50">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 20px !important">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/commands">Commands</a>
+                <% if (!current){ %>
+                <%  } else { %>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/dashboard">Settings</a>
+                    <a class="dropdown-item" href="/logout">Logout</a>
+                    <%  } %>
+            </div>
+        </div>
+        <% if (!current){ %>
+            <a href="/login">
+                <button class="btn login-btn btn-outline-accent my-2 my-sm-0" style="font-size: 10px !important;font-family: poppins !important;">LOGIN</button>
+            </a>
+        <%  } else { %>
+            <button disabled="true" class="btn login-btn btn-outline-accent my-2 my-sm-0" style="font-size: 10px !important;font-family: poppins !important;"><%- current.username %>#<%- current.discriminator %></button>
+            <%  } %>
+    </div>
+</nav>
+<div class="heading">
+    <h1 class="display-5 title">It's time to use <%- user.user.username %> in your server.</h1>
+    <p class="subtitle"><%- user.user.username %> is a bot ready to skill up and boost up your Discord server<br />Features almost every needed tool for applications!</p>
+    <a class="btn btn-primary btn-lg" href="https://dsc.gg/pink" target="_blank" role="button">Join Support</a>
+    <a class="btn btn-secondary btn-lg" href="<%- invite.replace('&disable_guild_select=true&guild_id=REPLACE_ME', '') %>" target="_blank" role="button">Add to server</a>
+    <br /><br /><br /><br /><br /><br />
+</div>
+<div class="features">
+    <div class="title">Features of <%- user.user.username %></div>
+    <div class="subtitle">We provide you the best features in <%- user.user.username %>!</div>
+    <div class="cards">
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Applications</h5>
+            <p class="card-text"><% user.user.username %> is a simple to use discord bot for handling applications/forms across servers.
+            </p>
+        </div>
+    </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Slash Based</h5>
+                <p class="card-text">While text base commands are nice, Luci is 100% Slash command based! So all you need to do is start your message with <code>/</code> and you can see all of her commands!</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Unique Forms</h5>
+                <p class="card-text"><% user.user.username %> allows the newer way to fill out a form on discord! All thats needed is <code>/apply</code> and a form appears!</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="statistics">
+    <div class="cards">
+        <div class="card statistic" style="width: 18rem;">
+            <div class="card-body">
+                <p class="card-title" style="font-size: 50px !important;line-height: 15px !important;letter-spacing: -0.06em !important;font-weight: bold !important;"><%- user.guilds.cache.size %></h1>
+                <p style="font-weight: bold !important;font-size: 20px !important;">servers</p>
+            </div>
+        </div>
+        <div class="card statistic" style="width: 18rem;">
+            <div class="card-body">
+                <p class="card-title" style="font-size: 50px !important;line-height: 15px !important;letter-spacing: -0.06em !important;font-weight: bold !important;"><%- user.guilds.cache.reduce((a, g) => a + g.memberCount, 0) %></h1>
+                <p style="font-weight: bold !important;font-size: 20px !important;">users</p>
+            </div>
+        </div>
+        <div class="card statistic" style="width: 18rem;">
+            <div class="card-body">
+                <p class="card-title" style="font-size: 50px !important;line-height: 15px !important;letter-spacing: -0.06em !important;font-weight: bold !important;"><%- user.channels.cache.size %></h1>
+                <p style="font-weight: bold !important;font-size: 20px !important;">channels</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page_end">
+    <div class="start">
+        <div class="card">
+            <div class="card-body gs-card">
+                <div class="title">Ready to try <%- user.user.username %>?</div>
+                <div class="subtitle">Invite  <%- user.user.username %> and start giving your server cool perks!</div>
+                <br />
+                <a class="btn btn-primary btn-lg" href="<%- invite %>" role="button">Get started</a>
+            </div><br />
+        </div>
+    </div>
+    <div class="footer">
+        <div class="bot-footer">
+            <img src="<%- user.user.avatarURL({ format: 'png', size: 256, dynamic: true }) %>" width="150"><br />
+            Copyright © Desu#0002
+        </div><br/>
+        <div class="nouridio">Website Style Designed by <a href="https://nouridio.com"> nouridio</a></div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="js/now-ui-kit.min.js"></script>
+</body>
+</html>
