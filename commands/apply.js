@@ -18,7 +18,7 @@ module.exports = {
                     var i = 0;
                     const modal = new Modal() // We create a Modal
                         .setCustomId('application_' + apps.name)
-                        .setTitle('Application Form for: ' + apps.name);
+                        .setTitle('Apply: ' + apps.name);
                     if (apps.question.length >= 1 && i < apps.question.length) {
                         await apps.question.forEach(async q => {
                             i++
