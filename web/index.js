@@ -91,6 +91,9 @@ module.exports = async (client) => {
             res.redirect("/");
         });
     });
+    app.get("/help", function (req, res) {
+           res.redirect("https://discord.gg/"+( process.env.supportCode || "ce" ))
+    })
     app.use(function (req,res,next){
         res.status(404).render('404',{ user: client, current: req.user});
     });
