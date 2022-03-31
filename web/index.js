@@ -65,6 +65,9 @@ module.exports = async (client) => {
     app.get("/dashboard", authenticate, function (req, res,) {
         res.render('dash', { user: client, invite: invite, current: req.user, permissions: Discord.Permissions });
     });
+    app.get("/me", authenticate, function (req, res,) {
+        res.render('profile', { user: client, invite: invite, current: req.user, permissions: Discord.Permissions, flags: Discord.UserFlags });
+    });
     // LOGIN AND LOGOUT + CALLBACK
     app.get("/login", (req, res, next) => {
         if (req.session.backURL) {

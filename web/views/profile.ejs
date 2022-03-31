@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/now-ui-kit.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,600,700,800,900&display=swap" rel="stylesheet">
+    <title><%- user.user.username %></title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-transparent">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img src="assets/menuIcon.svg" width="20px" height="20px" style="max-width: none !important;">
+    </button>
+    <img src="<%- user.user.avatarURL({ format: 'png', size: 256, dynamic: true }) %>" width="50" height="50">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 20px !important">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menu
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/commands">Commands</a>
+                <% if (!current){ %>
+                    <%  } else { %>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/dashboard">Settings</a>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                        <%  } %>
+            </div>
+        </div>
+        <% if (!current){ %>
+            <a href="/login">
+                <button class="btn login-btn btn-outline-accent my-2 my-sm-0" style="font-size: 10px !important;font-family: poppins !important;">LOGIN</button>
+            </a>
+        <%  } else { %>
+            <button disabled="true" class="btn login-btn btn-outline-accent my-2 my-sm-0" style="font-size: 10px !important;font-family: poppins !important;"><%- current.username %>#<%- current.discriminator %></button>
+            <%  } %>
+    </div>
+</nav>
+<div class="heading">
+    <h1 class="display-5 title">Profile</h1>
+    <p class="subtitle">Here you can view your discord information and badges!</p>
+    <br /><br /><br /><br /><br /><br />
+</div>
+<div class="features">
+    <div class="title">Profile Badges:</div>
+    <div class="subtitle">Here are all the badges you have, <code><%=current.username %>#<%=current.discriminator %></code></div>
+    <div class="cards">
+        <div class="card" style="width: 100%; height: auto;">
+        <div class="card-body" style="color: white;">
+            <% new flags(current.flags).toArray().map(badge =>{ %>
+                <img src="/assets/flags/<%- badge %>.png" style="width: fit-content;"> <%- badge.toLowerCase().replace(/\_/g, " ") %>
+           <% })%>
+        </div>
+    </div>
+    </div>
+
+    <div class="title">Profile Images:</div>
+    <div class="subtitle">Here is the avatar and banner you have globally, <code><%=current.username %>#<%=current.discriminator %></code></div>
+    <div class="cards">
+        <div class="card" style="width: 100%; height: auto;">
+        <div class="card-body" style="color: white;">
+                <img src="https://images.discordapp.net/avatars/<%-current.id %>/<%- current?.avatar %>?size=100" alt="User Avatar" style="width: fit-content;">
+                <img src="https://images.discordapp.net/banners/<%-current.id %>/<%- current?.banner %>?size=240"alt="User Banner" style="width: fit-content;">
+        </div>
+    </div>
+    </div>
+</div>
+    <div class="footer">
+        <div class="bot-footer">
+            <img src="<%- user.user.avatarURL({ format: 'png', size: 256, dynamic: true }) %>" width="150"><br />
+            Copyright © Desu#0002
+        </div><br/>
+        <div class="nouridio">Website Style Designed by <a href="https://nouridio.com"> nouridio</a></div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="js/now-ui-kit.min.js"></script>
+</body>
+</html>
