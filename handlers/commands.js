@@ -22,19 +22,19 @@ module.exports = (client) => {
         (async () => {
 
             try {
-                if (process.env.slashGlobal || !process.env.testGuildID) {
-                    // await rest.put(
-                    //     Routes.applicationCommands(client.user.id), {
-                    //     body: commands
-                    // },
-                    // );
+                if (process.env.slashGlobal == true || !process.env.testGuildID) {
+                     await rest.put(
+                         Routes.applicationCommands(client.user.id), {
+                         body: commands
+                     },
+                    );
                     console.log('Loaded Slash Commands (GLOBAL)');
                 } else {
-                    // await rest.put(
-                    //     Routes.applicationGuildCommands(client.user.id, process.env.testGuildID), {
-                    //     body: commands
-                    // },
-                    // );
+                    await rest.put(
+                        Routes.applicationGuildCommands(client.user.id, process.env.testGuildID), {
+                        body: commands
+                    },
+                    );
                     console.log('Loaded Slash Commands (DEVELOPMENT)');
                 }
             } catch (e) { console.error(e); }
