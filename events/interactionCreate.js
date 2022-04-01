@@ -22,7 +22,7 @@ module.exports = {
                 await member.roles.remove(arole)
                 return interaction.update({ content: `Accepted and set their roles if there were roles set up!`, components: [ row ]});
                 }
-                return interaction.reply({content: `Accepted ${ureg}!`, components: [ row ]});
+                return interaction.update({content: `Accepted ${ureg}!`, components: [ row ]});
             })
         }
         if (!interaction.isCommand()) return;
