@@ -24,14 +24,20 @@ module.exports = {
                 emb.addField(`${Number(i + 1)}: ${appQ[i]}`, question.value || "No response", true)
             })
             let appLogs = await modal.client.db.get(modal.guild.id + ".apps_log");
-            const button = new MessageButton()
+            const button1 = new MessageButton()
                 .setCustomId('formAccept_' + modal.user.id)
-                .setLabel('ACCEPT')
+                .setLabel('Accept')
                 .setStyle('SUCCESS')
+                .setDisabled(false);
+            const button2 = new MessageButton()
+                .setCustomId('formDeny_' + modal.user.id)
+                .setLabel('Deny')
+                .setStyle('DANGER')
                 .setDisabled(false);
             const row = new MessageActionRow()
                 .addComponents(
-                    button
+                    button1,
+                    button2
                 );
             await modal.guild.channels.cache.get(appLogs).send({
                 embeds: [
