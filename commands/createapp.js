@@ -15,7 +15,7 @@ module.exports = {
             return app?.length || 0
         })
         let questions = interaction.options.getString("questions")
-        let q = questions.split(" | ");
+        let q = questions.split("|");
         if (exist >= 4) return interaction.reply("The max amount of Applications a guild can make is **4**")
         if (q.length >= 6) return interaction.reply("Apps can only have a max of 5 questions!");
         if (!interaction.guild.channels.cache.get(await interaction.client.db.get(interaction.guild.id + ".apps_log"))) return interaction.reply("Please set an App Log channel first!");
