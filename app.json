@@ -3,5 +3,23 @@
   "description": "A Discord Application bot.",
   "repository": "https://github.com/Akrasio/AppBot/",
   "logo": "https://avatars.githubusercontent.com/u/106497713?s=200&v=4",
-  "keywords": ["node", "express", "static", "discord.js"]
+  "keywords": ["node", "express", "static", "discord.js"],
+  "env": {
+    "clientSecret=": {
+      "description": "The client secret for your bot on discord!",
+      "required": true
+    },
+    "web": true,
+    "supportCode": {
+      "description": "The support server INVITE code",
+       "required": true
+    },
+    "callbackURL": {
+       "description": "The callback url for your bots website!"
+    }
+    "TOKEN": {
+      "description": "The callback url for your bots website!",
+      "required": true
+    },
+  },
 }
