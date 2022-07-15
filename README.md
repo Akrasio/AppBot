@@ -20,4 +20,7 @@ ___
 - `ping` => *Replies with pong*
 ___
 
-Developer: [Xan#1034](https://discord.com/users/523579776749928449)
+## Deploy with heroku with the button below:
+<a target="_blank" href="https://heroku.com/deploy/?template=https://github.com/Akrasio/Appbot"><img alt="Deploy to Heroku" src="https://raw.githubusercontent.com/BinBashBanana/deploy-buttons/master/buttons/remade/heroku.svg"></a>
+
+Developer: [Akrasio#6075](https://discord.com/users/523579776749928449)
