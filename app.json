@@ -1,0 +1,7 @@
+{
+  "name": "Discord AppBot",
+  "description": "A Discord Application bot.",
+  "repository": "https://github.com/Akrasio/AppBot/",
+  "logo": "https://avatars.githubusercontent.com/u/106497713?s=200&v=4",
+  "keywords": ["node", "express", "static", "discord.js"]
+}
