@@ -5,17 +5,23 @@
   "logo": "https://avatars.githubusercontent.com/u/106497713?s=200&v=4",
   "keywords": ["node", "express", "static", "discord.js"],
   "env": {
-    "clientSecret=": {
+    "clientSecret": {
       "description": "The client secret for your bot on discord!",
       "required": true
     },
-    "web": true,
+    "MONGO": {
+      "description": "The MONGODB for your bot on discord!",
+      "required": true,
+      "value": "mongodb://username:password@example.com:27017/DB?authSource=admin"
+    },
     "supportCode": {
-      "description": "The support server INVITE code",
-       "required": true
+       "description": "The support server INVITE code",
+       "required": true,
+       "value": "nKPp7DtvrP"
     },
     "callbackURL": {
-       "description": "The callback url for your bots website!"
+       "description": "The callback url for your bots website!",
+       "value": "nKPp7DtvrP"
     },
     "TOKEN": {
       "description": "The callback url for your bots website!",
