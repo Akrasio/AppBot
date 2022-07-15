@@ -16,7 +16,7 @@
     },
     "callbackURL": {
        "description": "The callback url for your bots website!"
-    }
+    },
     "TOKEN": {
       "description": "The callback url for your bots website!",
       "required": true
