@@ -21,7 +21,7 @@
     },
     "callbackURL": {
        "description": "The callback url for your bots website!",
-       "value": "https://example.com/auth/callback"
+       "value": "https://example.com/callback"
     },
     "TOKEN": {
       "description": "The token for your bot!",
