@@ -8,6 +8,8 @@ module.exports = {
             if (interaction.customId.match(/(?:formAccept_\d+)/g)) {
                 let mrole = await client.db.get(`${interaction.guild.id}.modrole`);
                 let arole = await client.db.get(`${interaction.guild.id}.approle`);
+                let mmrole = await interaction.guild.roles.cache.get(mrole);
+                let aarole = await interaction.guild.roles.cache.get(arole)
                 let ureg = interaction.customId.match(/(?:formAccept_\d+)/g).toString().split("_")[1]
                 const button = new MessageButton()
                     .setCustomId(interaction.customId)
@@ -17,9 +19,13 @@ module.exports = {
                 const row = new MessageActionRow()
                     .addComponents(button);
                 await interaction.guild.members.fetch(ureg).then(async (member) => {
-                    if (mrole && arole) {
+                    if (mrole && arole && aarole && mmrole) {
                         await member.roles.add(mrole);
                         await member.roles.remove(arole)
+                        return interaction.update({ content: `Accepted and set their roles if there were roles set up!`, components: [row] });
+                    }
+                    if (mrole && mmrole) {
+                        await member.roles.add(mrole);
                         return interaction.update({ content: `Accepted and set their roles if there were roles set up!`, components: [row] });
                     }
                     return interaction.update({ content: `Accepted this appication!`, components: [row] });
